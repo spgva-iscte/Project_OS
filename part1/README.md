@@ -8,7 +8,7 @@ Then there is a bash script called menu which will allows to run this different 
 
 # Cria_Paciente.sh
 This script shall read the file ect/passwd of the Tigre server. It should identify the pacients that are recorded in this file. The pacients can be identified because they start with the letter 'a' and there's at least one number following after the 'a'. Then the script shall print the first 10 pacients in a file called "pacientes.txt" (pacients.txt). The structure of a pacitent will be
- > <ID number>;<Name>;<location>;<phone number>;<e-mail>;<balance>
+ > ID number;Name;location;phone number;e-mail;balance
 
 
 # Menu
