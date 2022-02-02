@@ -1,0 +1,32 @@
+#!/bin/bash
+option=5
+while [ $option -ne 0 ]; do
+	echo "1. Cria pacientes"
+	echo "2. Cria médicos"
+	echo "3. Stats"
+	echo "4. Avalia médicos"
+	echo "0. Sair"
+	echo "Selecione uma opção através de um numero: "
+	read option
+	case $option in
+		1) ./criar_pacientes.sh;;
+		2) echo "indique o nome do médico: "
+		read nome
+		echo "indique o número de cédula: "
+		read numero
+		echo "indique a especialidade: "
+		read especialidade
+		echo "indique o e-mail: "
+		read email
+		./criar_medico.sh "$nome" $numero "$especialidade" $email;;
+		3)echo "indique a localidade: "
+		read localidade
+		echo "indique o saldo: "
+		read saldo
+		./stats.sh "$localidade" $saldo;;
+		4) ./avalia_medicos.sh;;
+		0) exit;;
+		*) echo "Não é uma opção";;
+	esac
+done
+
