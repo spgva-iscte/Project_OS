@@ -33,5 +33,8 @@ If it receives a SIGNINT sign, it will let the client know that they canceled th
 This function will put every appointment with the type '-1'. When the type is '-1' we consider the appointment does not exist. It is the same as if the space occupied by that appointment was free. It will put the different counters from each type of appointment at 0 and right the PID of the server at the file "SrvConsultas.pid".
 
 ### handler_SIGUSR1
-When it receives a sign SIGUSR1 it will read the information written in "PedidoConsulta.txt" and puts that info in a new object of the type Consulta. Then it will check if there is any appointment in the list which the type is -1. If there isn't it will send a SIGUSR2 to the client and increases the counter of lost appointments. If there is it will book an appointment in the first empty room.
+When it receives a sign SIGUSR1 it will read the information written in "PedidoConsulta.txt" and puts that info in a new object of the type Consulta. Then it will check if there is any appointment in the list which the type is -1. If there isn't it will send a SIGUSR2 to the client and increases the counter of lost appointments. If there is it will book an appointment in the first empty room. It will create a child process which sends a SIGHUP sign to the client and uses an alarm to count 10 seconds. After the 10 sends it prints a message saying that the appointment is finished. It sends a SIGTERM to the client and kills the child process. The parent process has to wait for the child process. It will delete the appointment from the appointment list.
+
+### handler_SIGINT
+If the server receives a SIGINT sign it will delete the "SrvConsultas.pid" file and write a binary file with the counters information and e terminate the program.
 
