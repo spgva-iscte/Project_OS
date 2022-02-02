@@ -9,7 +9,7 @@ while [ $option -ne 0 ]; do
 	echo "Selecione uma opção através de um numero: "
 	read option
 	case $option in
-		1) ./criar_pacientes.sh;;
+		1) ./cria_pacientes.sh;;
 		2) echo "indique o nome do médico: "
 		read nome
 		echo "indique o número de cédula: "
@@ -18,7 +18,7 @@ while [ $option -ne 0 ]; do
 		read especialidade
 		echo "indique o e-mail: "
 		read email
-		./criar_medico.sh "$nome" $numero "$especialidade" $email;;
+		./cria_medico.sh "$nome" $numero "$especialidade" $email;;
 		3)echo "indique a localidade: "
 		read localidade
 		echo "indique o saldo: "
